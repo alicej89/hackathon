@@ -29,7 +29,12 @@ export function CameraScreen() {
     );
   }
 
-  return <Camera />;
+  return (
+    <>
+      <Camera />
+      {__DEV__ && <Button onPress={navigateToDetails}>Go to Details</Button>}
+    </>
+  );
 }
 
 const styles = StyleSheet.create({

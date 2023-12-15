@@ -1,11 +1,24 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import { Button, Text } from "react-native-paper";
+import * as Location from "expo-location";
 
 export function PermissionsScreen({ navigation }: any) {
   function navigateToCamera() {
     navigation.replace("Camera" as never);
   }
+
+  const [locationStatus, setLocationStatus] =
+    React.useState<Location.PermissionStatus | null>(null);
+
+  const handleRequestPermission = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      alert("Permission to access location was denied");
+    }
+
+    setLocationStatus(status);
+  };
 
   return (
     <View style={styles.content}>
@@ -14,13 +27,39 @@ export function PermissionsScreen({ navigation }: any) {
         In order to use PAM Track, you need to allow the application access to
         the device camera and geolocation.
       </Text>
+      {/* TODO: migrated permissions here */}
       <Button
-        onPress={navigateToCamera}
+        onPress={() =>
+          Alert.alert(
+            "Allow",
+            "Allow the application access to the device camera and geolocation."
+          )
+        }
         style={styles.submitButton}
-        mode="contained"
+        mode="outlined"
       >
         Allow
       </Button>
+      <Text variant="bodyLarge">
+        The application will not share your location with anyone.
+      </Text>
+      <Button
+        onPress={handleRequestPermission}
+        style={styles.submitButton}
+        mode="outlined"
+      >
+        Ask Location permission
+      </Button>
+
+      {locationStatus === "granted" && (
+        <Button
+          onPress={navigateToCamera}
+          style={styles.submitButton}
+          mode="contained"
+        >
+          Go to Camera
+        </Button>
+      )}
     </View>
   );
 }
