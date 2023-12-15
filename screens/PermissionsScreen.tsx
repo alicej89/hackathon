@@ -3,11 +3,12 @@ import { SafeAreaView, StyleSheet, View } from "react-native";
 import { Button, Text } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 
-export function PermissionsScreen() {
+export function PermissionsScreen({ navigation}) {
   
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
     function navigateToCamera() {
-        navigation.navigate("Camera" as never);
+        // navigation.navigate("Camera" as never);
+        navigation.replace("Camera" as never);
     }
 
   return (
