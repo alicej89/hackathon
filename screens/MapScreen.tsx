@@ -13,7 +13,7 @@ export const MapScreen = () => {
     <View>
       <ScrollView style={{ padding: 32 }}>
         <Text variant="bodyMedium" style={{ marginBottom: 24 }}>
-            Map to be displayed here 🗺️
+          Map to be displayed here 🗺️
         </Text>
         <Text variant="bodySmall">...Hopefully</Text>
       </ScrollView>

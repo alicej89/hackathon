@@ -12,26 +12,12 @@ const Stack = createNativeStackNavigator();
 export function Navigator(props: NavigatorProps) {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Permissions"
-      >
-        <Stack.Screen
-          name="Permissions"
-          component={PermissionsScreen}
-        />
-        <Stack.Screen
-          name="Camera"
-          component={CameraScreen}
-        />
-        <Stack.Screen
-          name="Details"
-          component={DetailsScreen}
-        />
-        <Stack.Screen
-          name="Map"
-          component={MapScreen}
-        />
+      <Stack.Navigator initialRouteName="Permissions">
+        <Stack.Screen name="Permissions" component={PermissionsScreen} />
+        <Stack.Screen name="Camera" component={CameraScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Map" component={MapScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-  )
+  );
 }

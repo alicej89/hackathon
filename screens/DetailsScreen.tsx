@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 
 export const DetailsScreen = () => {
   const navigation = useNavigation();
+
   function goBack() {
     //navigation.navigate("Login" as never);
   }
@@ -13,7 +14,7 @@ export const DetailsScreen = () => {
     <View>
       <ScrollView style={{ padding: 32 }}>
         <Text variant="bodyMedium" style={{ marginBottom: 24 }}>
-            Map to be displayed here 🗺️
+          Map to be displayed here 🗺️
         </Text>
         <Text variant="bodySmall">...Hopefully</Text>
       </ScrollView>

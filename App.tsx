@@ -1,21 +1,7 @@
 import React from "react";
-import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
 
 import { Navigator } from "./navigation/navigator";
 
 export default function App() {
-  return (
-    
-      <Navigator />
-    
-  );
+  return <Navigator />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

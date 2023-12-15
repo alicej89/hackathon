@@ -1,6 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
-import { Text, View } from 'react-native'
-import { Button } from 'react-native-paper';
+import { useNavigation } from "@react-navigation/native";
+import { Text, View } from "react-native";
+import { Button } from "react-native-paper";
 
 interface CameraScreenProps {}
 
@@ -9,14 +9,11 @@ export function CameraScreen(props: CameraScreenProps) {
   function navigateToDetails() {
     navigation.navigate("Details" as never);
   }
-  
-  
+
   return (
     <View>
       <Text>CameraScreen</Text>
-      <Button onPress={navigateToDetails}>
-          Go to Details
-        </Button>
+      <Button onPress={navigateToDetails}>Go to Details</Button>
     </View>
-  )
+  );
 }
