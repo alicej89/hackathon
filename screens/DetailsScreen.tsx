@@ -1,11 +1,12 @@
 import { useRoute } from "@react-navigation/native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import type { LocationObject } from "expo-location";
 import { GestureResponderEvent, ScrollView, View } from "react-native";
 import { Text } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { MapsPreview } from "../components/MapsPreview";
 import { getTime } from "date-fns";
+import * as Location from "expo-location";
 
 /**
  * This is a mock of the location object returned by the camera.
@@ -25,9 +26,23 @@ export const initialLocation: LocationObject = {
 };
 
 export const DetailsScreen = () => {
-  const route = useRoute<any>();
-
+  const route = useRoute<any>(); // get Scanned data from CameraScreen
   const navigation = useNavigation<any>();
+  const [location, setLocation] = useState<LocationObject | null>(null);
+  console.log(
+    "🚀 ~ file: DetailsScreen.tsx:32 ~ DetailsScreen ~ location:",
+    location
+  );
+
+  useEffect(() => {
+    const fetchLocation = async () => {
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    };
+
+    fetchLocation();
+  }, []);
+
   function navigateToMaps() {
     navigation.navigate("Map", { location: initialLocation });
   }
@@ -40,7 +55,7 @@ export const DetailsScreen = () => {
         </Text>
         <Text>{JSON.stringify(route.params)}</Text>
       </View>
-      <MapsPreview location={initialLocation} onPress={navigateToMaps} />
+      <MapsPreview location={location} onPress={navigateToMaps} />
     </ScrollView>
   );
 };

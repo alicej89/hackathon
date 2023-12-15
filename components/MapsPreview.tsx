@@ -33,6 +33,7 @@ export const MapsPreview = ({ location, onPress }: MapsPreviewProps) => {
         initialRegion={initialRegion}
         scrollEnabled={false}
         liteMode={true}
+        showsUserLocation={true}
       />
     </TouchableOpacity>
   );

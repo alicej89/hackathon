@@ -19,11 +19,13 @@ export const MapScreen = () => {
 
   return (
     <View style={styles.container}>
+      {/* extrat this to a Map component to make it easially shareable */}
       <MapView
         style={styles.map}
         initialRegion={location}
-        // locationArea={updatedRegion}
-        // onRegionChangeComplete={handleRegionChangeComplete}
+        locationArea={updatedRegion}
+        onRegionChangeComplete={handleRegionChangeComplete}
+        showsUserLocation={true}
       />
     </View>
   );
