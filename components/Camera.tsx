@@ -35,6 +35,7 @@ export const Camera = (props: CameraProps) => {
         ],
       }}
       onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+      useCamera2Api
       {...props}
     >
       <View style={styles.buttonContainer}>
