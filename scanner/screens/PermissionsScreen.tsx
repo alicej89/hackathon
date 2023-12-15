@@ -5,13 +5,13 @@ import { useNavigation } from "@react-navigation/native";
 
 export function PermissionsScreen() {
   
-    //const navigation = useNavigation();
+    const navigation = useNavigation();
     function navigateToCamera() {
-        //navigation.navigate("Camera" as never);
+        navigation.navigate("Camera" as never);
     }
 
   return (
-    <SafeAreaView style={styles.container}>
+
       <View style={styles.content}>
         <Text variant="headlineSmall">Permissions</Text>
         <Text variant="bodyLarge">In order to use PAM Track, you need to allow the application access to the device camera and geolocation.</Text>
@@ -22,7 +22,6 @@ export function PermissionsScreen() {
           Allow
         </Button>
       </View>
-    </SafeAreaView>
   );
 }
 
