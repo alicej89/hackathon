@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Button, Text } from "react-native-paper";
 
-export function PermissionsScreen({ navigation }) {
+export function PermissionsScreen({ navigation }: any) {
   function navigateToCamera() {
     navigation.replace("Camera" as never);
   }

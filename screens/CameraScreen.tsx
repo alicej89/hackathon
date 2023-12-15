@@ -2,9 +2,9 @@ import { useNavigation } from "@react-navigation/native";
 import { Text, View, StyleSheet } from "react-native";
 import { Button, ActivityIndicator } from "react-native-paper";
 
-import { Camera } from 'expo-camera';
+import { Camera as CameraExpo } from "expo-camera";
 
-import CameraComponent from "../components/CameraComponent";
+import { Camera } from "../components/Camera";
 
 export function CameraScreen() {
   const navigation = useNavigation();
@@ -12,29 +12,29 @@ export function CameraScreen() {
     navigation.navigate("Details" as never);
   }
 
-  const [permission, requestPermission] = Camera.useCameraPermissions();
+  const [permission, requestPermission] = CameraExpo.useCameraPermissions();
 
   if (!permission) {
-    return <ActivityIndicator animating={true} />
+    return <ActivityIndicator animating={true} />;
   }
 
   if (!permission.granted) {
     return (
       <View style={styles.container}>
-        <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
+        <Text style={{ textAlign: "center" }}>
+          We need your permission to show the camera
+        </Text>
         <Button onPress={requestPermission}>Allow</Button>
       </View>
     );
   }
 
-  return (
-      <CameraComponent />
-  );
+  return <Camera />;
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-  }
+    justifyContent: "center",
+  },
 });
